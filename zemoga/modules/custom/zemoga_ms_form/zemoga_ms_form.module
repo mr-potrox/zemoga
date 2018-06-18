@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains zemoga_ms_form.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function zemoga_ms_form_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the zemoga_ms_form module.
+    case 'help.page.zemoga_ms_form':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Defines framework to create ajax based multi step forms.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

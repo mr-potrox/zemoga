@@ -1,0 +1,21 @@
+uuid: 105ca925-83e4-4a41-94e3-19c22bcfdd03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_gender
+  module:
+    - options
+    - user
+id: user.user.field_gender
+field_name: field_gender
+entity_type: user
+bundle: user
+label: Gender
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

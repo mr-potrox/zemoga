@@ -1,0 +1,9 @@
+
+zemoga_ms_form.zemoga_multi_step_form:
+  path: '/zemoga-multi-step-form'
+  defaults:
+    _form: '\Drupal\zemoga_ms_form\Form\ZemogaMultiStepForm'
+    _title: 'Welcome To Zemoga User Form'
+  requirements:
+    _access: 'TRUE'
+  

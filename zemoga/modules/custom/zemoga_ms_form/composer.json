@@ -1,0 +1,14 @@
+{
+  "name": "drupal/zemoga_ms_form",
+  "type": "drupal-module",
+  "description": "Defines framework to create ajax based multi step forms.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/zemoga_ms_form",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/zemoga_ms_form",
+    "source": "http://cgit.drupalcode.org/zemoga_ms_form"
+  },
+  "require": { }
+}
