@@ -173,6 +173,7 @@ class ZemogaMultiStepForm extends FormBase {
     foreach ($this->step->getFieldNames() as $name) {
       $values[$name] = $form_state->getValue($name);
     }
+    $form_state->setStorage($values);
     $this->step->setValues($values);
     // Add step to manager.
     $this->stepManager->addStep($this->step);
@@ -198,7 +199,61 @@ class ZemogaMultiStepForm extends FormBase {
    *   Form state interface.
    */
   public function submitValues(array &$form, FormStateInterface $form_state) {
-    // Submit all values to DB or do whatever you want on submit.
+    
+    // Create a new user
+    // Getting the form values.
+    $values = [];
+   
+    $steps_values = $this->stepManager->steps;
+    foreach ($steps_values as $step => $step_value) {
+      $field_definitions = $step_value->getValues();
+      foreach ($field_definitions as $field_name => $field_value) {
+        if ($field_name == "gender") {
+          foreach ($field_value as $value) {
+            if ($value) {
+              $values[$field_name] = $value;
+            }
+          }
+        }
+        else{
+          $values[$field_name] = $field_value;
+        }
+        
+      }
+    }
+
+    $user_name = str_replace(' ', '', $values['first_name']) . '_' . str_replace(' ', '', $values['last_name']);
+
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $user = \Drupal\user\Entity\User::create();
+ 
+    // The Basics
+    $user->setUsername($user_name);
+    $user->setPassword('zemogaTest');
+    $user->setEmail($user_name . '@zemogaTest.com');
+    $user->enforceIsNew();  // Set this to FALSE if you want to edit (resave) an existing user object
+    $user->set('field_first_name', $values['first_name']);
+    $user->set('field_last_name', $values['last_name']);
+    $user->set('field_date_of_birth', $values['date_of_birth']);
+    $user->set('field_gender', $values['gender']);
+    $user->set('field_city', $values['city']);
+
+    if (!empty($values['address'])) {
+      $user->set('field_address', $values['address']);
+    }
+
+    if (!empty($values['address'])) {
+      $user->set('field_phone_number', $values['phone_number']);
+    }
+
+    $user->set("init", $user_name . '@zemogaTest.com');
+    $user->set("langcode", $lang);
+    $user->set("preferred_langcode", $lang);
+    $user->set("preferred_admin_langcode", $lang);
+    $user->activate();
+ 
+    // Save user
+    $result = $user->save();
   }
 
 }

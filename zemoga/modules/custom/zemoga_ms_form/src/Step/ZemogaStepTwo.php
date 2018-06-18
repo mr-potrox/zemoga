@@ -78,13 +78,7 @@ class ZemogaStepTwo extends ZemogaBaseStep {
     return [
       'city' => [
         new ZemogaValidatorRequired("Please type your City. This field is required."),
-      ],
-      'phone_number' => [
-        new ZemogaValidatorRequired("Please type your Phone Number. This field is required."),
-      ],
-      'address' => [
-        new ZemogaValidatorRequired("Please type your Address. This field is required."),
-      ],
+      ]
     ];
   }
 

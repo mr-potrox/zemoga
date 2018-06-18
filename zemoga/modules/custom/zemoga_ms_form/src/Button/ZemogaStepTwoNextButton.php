@@ -26,6 +26,7 @@ class ZemogaStepTwoNextButton extends ZemogaBaseButton {
       '#type' => 'submit',
       '#value' => t('Next'),
       '#goto_step' => ZemogaStepsNum::STEP_THREE,
+      '#submit_handler' => 'submitValues',
     ];
   }
 
