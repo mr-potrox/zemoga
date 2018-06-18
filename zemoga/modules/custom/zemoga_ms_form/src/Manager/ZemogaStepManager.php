@@ -17,7 +17,7 @@ class ZemogaStepManager {
    *
    * @var \Drupal\zemoga_ms_form\Step\ZemogaStepInterface
    */
-  protected $steps;
+  public $steps;
 
   /**
    * StepManager constructor.
