@@ -29,7 +29,7 @@ class ZemogaStepFinalize extends ZemogaBaseStep {
   public function buildStepFormElements() {
 
     $form['completed'] = [
-      '#markup' => t('You have completed the wizard, yeah!'),
+      '#markup' => t('The user was created successfully!'),
     ];
 
     return $form;
